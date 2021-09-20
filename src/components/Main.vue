@@ -30,5 +30,7 @@
 </script>
 
 <style scoped>
-
+  /*.content-wrapper{*/
+  /*  height: 100%;*/
+  /*}*/
 </style>

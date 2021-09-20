@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueGridLayout from 'vue-grid-layout';
 
 import Home from './components/home/Home.vue'
 
