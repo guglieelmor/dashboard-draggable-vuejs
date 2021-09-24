@@ -22,7 +22,9 @@
            :key="item.i"
            class="card"
         >
-          {{item.i}}
+<!--          {{ item.x }} {{ item.y }} {{ item.w }} {{ item.h }}-->
+<!--          <Pie></Pie>-->
+          <highcharts :options="chartOptions" :callback="reflow"></highcharts>
         </grid-item>
       </grid-layout>
     </Main>
@@ -31,39 +33,41 @@
 
 <script>
   import Main from "../Main";
+  import Pie from "../../charts/Pie";
+  import { Chart } from 'highcharts-vue'
   import VueGridLayout from 'vue-grid-layout';
 
   export default {
     name: 'home',
     components: {
-      Main: Main,
+      Main,
+      Pie,
+      highcharts: Chart,
       GridLayout: VueGridLayout.GridLayout,
       GridItem: VueGridLayout.GridItem
+    },
+    methods:{
+      reflow(){
+        console.log('asdklfnasldnaskldn');
+      }
     },
     data () {
       return {
         columns: {xss: 1, xs: 1, sm: 2, md: 2, lg: 4},
+        chartOptions: {
+          chart: {
+            type: 'spline'
+          },
+          title: {
+            text: 'Sin chart'
+          },
+          series: [{
+            data: [10, 0, 8, 2, 6, 4, 5, 5],
+            color: '#6fcd98'
+          }]
+        },
         layout: [
-          {"x":0,"y":0,"w":2,"h":2,"i":"0"},
-          {"x":2,"y":0,"w":2,"h":4,"i":"1"},
-          {"x":4,"y":0,"w":2,"h":5,"i":"2"},
-          {"x":6,"y":0,"w":2,"h":3,"i":"3"},
-          {"x":8,"y":0,"w":2,"h":3,"i":"4"},
-          {"x":10,"y":0,"w":2,"h":3,"i":"5"},
-          {"x":0,"y":5,"w":2,"h":5,"i":"6"},
-          {"x":2,"y":5,"w":2,"h":5,"i":"7"},
-          {"x":4,"y":5,"w":2,"h":5,"i":"8"},
-          {"x":6,"y":3,"w":2,"h":4,"i":"9"},
-          {"x":8,"y":4,"w":2,"h":4,"i":"10"},
-          {"x":10,"y":4,"w":2,"h":4,"i":"11"},
-          {"x":0,"y":10,"w":2,"h":5,"i":"12"},
-          {"x":2,"y":10,"w":2,"h":5,"i":"13"},
-          {"x":4,"y":8,"w":2,"h":4,"i":"14"},
-          {"x":6,"y":8,"w":2,"h":4,"i":"15"},
-          {"x":8,"y":10,"w":2,"h":5,"i":"16"},
-          {"x":10,"y":4,"w":2,"h":2,"i":"17"},
-          {"x":0,"y":9,"w":2,"h":3,"i":"18"},
-          {"x":2,"y":6,"w":2,"h":2,"i":"19"}
+          {"x":0,"y":0,"w":4,"h":10,"i":"0"}
         ]
       }
     }
@@ -73,6 +77,6 @@
 <style>
   .card {
     margin: 0;
-    padding: 0;
+    padding: 10px;
   }
 </style>

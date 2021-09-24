@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueGridLayout from 'vue-grid-layout';
+import HighchartsVue from 'highcharts-vue'
 
 import Home from './components/home/Home.vue'
 
 import "halfmoon/css/halfmoon.min.css"
 import "halfmoon/css/halfmoon-variables.min.css"
-import "halfmoon/js/halfmoon"
 
 Vue.use(VueRouter)
+Vue.use(HighchartsVue)
 
 new Vue({
   el: '#app',
