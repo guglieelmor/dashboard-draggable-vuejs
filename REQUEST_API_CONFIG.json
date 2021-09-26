@@ -1,6 +1,7 @@
 {
-  "domain": "Dashboard",
-  "dark_mode": false,
+  "domain": "mydashboard",
+  "dashboard_name": "Fist Dashboard!",
+  "dark_mode": true,
   "columns": {
     "xss": 1,
     "xs": 1,
@@ -11,10 +12,51 @@
   "layout": [
     {
       "i":"0",
+      "g": "column",
       "x":0,
       "y":0,
-      "w":24,
-      "h":10
+      "w":16,
+      "h":8
+    },
+    {
+      "i":"1",
+      "g": "pie",
+      "x":16,
+      "y":0,
+      "w":16,
+      "h":8
+    },
+    {
+      "i":"2",
+      "g": "combo",
+      "x":32,
+      "y":0,
+      "w":16,
+      "h":8
+    },
+    {
+      "i":"3",
+      "g": "combo",
+      "x":0,
+      "y":20,
+      "w":16,
+      "h":8
+    },
+    {
+      "i":"4",
+      "g": "combo",
+      "x":16,
+      "y":20,
+      "w":16,
+      "h":8
+    },
+    {
+      "i":"5",
+      "g": "combo",
+      "x":32,
+      "y":20,
+      "w":16,
+      "h":8
     }
   ]
 }

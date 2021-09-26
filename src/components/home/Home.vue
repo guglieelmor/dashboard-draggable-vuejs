@@ -19,7 +19,7 @@
                    @resized="resizedEvent"
                    class="card"
         >
-          <Charts type="chartOptions" ref="charts"></Charts>
+          <Charts :type="item.g" ref="charts"></Charts>
         </grid-item>
       </grid-layout>
 
@@ -51,7 +51,7 @@
         });
 
         this.$http.get('/REQUEST_API_DATA.json').then(response => {
-          this.$store.commit("SET_DATA", response.data);
+          this.$store.commit("SET_DATACHART", response.data);
         });
 
       } catch(err){
@@ -61,10 +61,10 @@
     },
     methods: {
       resizeEvent: function(i, newH, newW, newHPx, newWPx){
-        // this.$refs.charts[i].chart.reflow();
-        const msg = "CONTAINER RESIZED i=" + i + ", H=" + newH + ", W=" + newW + ", H(px)=" + newHPx + ", W(px)=" + newWPx;
-        // console.log(msg)
-        this.$refs.charts[i].chart.setSize(newWPx, newHPx);
+        // this.$refs.charts[i].chart.setSize(newWPx, newHPx);
+       // this.$refs.charts[i].$children[i].chart.setSize(newWPx, newHPx);
+        this.$refs.charts[i].$refs.graph.chart.setSize(newWPx, newHPx);
+        console.log(i, newH, newW, newHPx, newWPx)
       },
       resizedEvent: function(i, newX, newY, newHPx, newWPx){
         // this.$refs.charts[i].chart.setSize(newX * 100, newY * 80);

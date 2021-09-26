@@ -9,12 +9,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    list: [],
+    dataChart: [],
     filter: ''
   },
   mutations:{
-    SET_DATA(state, obj){
-      state.list = obj
+    SET_DATACHART(state, obj){
+      state.dataChart = obj
     },
     SET_CONFIG(state, obj){
       console.log(obj)
