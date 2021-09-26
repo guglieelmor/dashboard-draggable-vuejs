@@ -1,11 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HighchartsVue from 'highcharts-vue'
 import store from './store/store'
-
-import Highcharts from 'highcharts'
-import darkUnica from "highcharts/themes/dark-unica";
-
+import axios from './axios/axios';
 
 import Home from './components/home/Home.vue'
 
@@ -14,8 +10,8 @@ import "halfmoon/css/halfmoon-variables.min.css"
 
 Vue.use(VueRouter);
 
-// darkUnica(Highcharts);
-Vue.use(HighchartsVue)
+
+Vue.prototype.$http = axios;
 
 new Vue({
   store,

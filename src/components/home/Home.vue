@@ -2,8 +2,8 @@
     <Main>
 
       <grid-layout :layout.sync="layout"
-                 :col-num="12"
-                 :row-height="30"
+                 :col-num="48"
+                 :row-height="40"
                  :is-draggable="draggable"
                  :is-resizable="resizable"
                  :vertical-compact="true"
@@ -29,10 +29,8 @@
 <script>
   import Main from "../Main";
   import Charts from "../../components/Charts";
-  import axios from "axios";
+  import 'halfmoon/js/halfmoon';
   import VueGridLayout from 'vue-grid-layout';
-
-  const http = axios.create();
 
   export default {
     name: 'home',
@@ -43,27 +41,39 @@
       GridItem: VueGridLayout.GridItem
     },
     mounted() {
-      http.get('/MOCK_DATA.json').then(response => {
-        this.$store.commit("SET_LIST", response.data);
-      });
+      try{
+
+        this.$http.get('/REQUEST_API_CONFIG.json').then(response => {
+          this.$store.commit("SET_CONFIG", response.data);
+          this.$store.commit("DARK_MODE", response.data.dark_mode);
+          this.layout = response.data.layout;
+          this.columns = response.data.columns;
+        });
+
+        this.$http.get('/REQUEST_API_DATA.json').then(response => {
+          this.$store.commit("SET_DATA", response.data);
+        });
+
+      } catch(err){
+        console.log(err);
+
+      }
     },
     methods: {
       resizeEvent: function(i, newH, newW, newHPx, newWPx){
         // this.$refs.charts[i].chart.reflow();
         const msg = "CONTAINER RESIZED i=" + i + ", H=" + newH + ", W=" + newW + ", H(px)=" + newHPx + ", W(px)=" + newWPx;
-        console.log(msg)
+        // console.log(msg)
         this.$refs.charts[i].chart.setSize(newWPx, newHPx);
       },
       resizedEvent: function(i, newX, newY, newHPx, newWPx){
         // this.$refs.charts[i].chart.setSize(newX * 100, newY * 80);
-      },
+      }
     },
     data () {
       return {
-        columns: {xss: 1, xs: 1, sm: 2, md: 2, lg: 4},
-        layout: [
-          {"x":0,"y":0,"w":4,"h":10,"i":"0"}
-        ],
+        columns: {},
+        layout: [],
         draggable: true,
         resizable: true,
         index: 0

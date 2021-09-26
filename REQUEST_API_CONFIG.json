@@ -1,0 +1,20 @@
+{
+  "domain": "Dashboard",
+  "dark_mode": false,
+  "columns": {
+    "xss": 1,
+    "xs": 1,
+    "sm": 2,
+    "md": 2,
+    "lg": 4
+  },
+  "layout": [
+    {
+      "i":"0",
+      "x":0,
+      "y":0,
+      "w":24,
+      "h":10
+    }
+  ]
+}
