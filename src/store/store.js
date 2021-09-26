@@ -8,5 +8,10 @@ export default new Vuex.Store({
   state: {
     list: [],
     filter: ''
+  },
+  mutations:{
+    SET_LIST(state, obj){
+      state.list = obj
+    }
   }
 })
