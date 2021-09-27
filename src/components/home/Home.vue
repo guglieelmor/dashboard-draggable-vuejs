@@ -7,6 +7,7 @@
                  :is-draggable="draggable"
                  :is-resizable="resizable"
                  :vertical-compact="true"
+                 :responsive="responsive"
                  :use-css-transforms="true"
       >
         <grid-item v-for="item in layout"
@@ -19,7 +20,7 @@
                    @resized="resizedEvent"
                    class="card"
         >
-          <Charts :type="item.g" ref="charts"></Charts>
+          <Charts :type="item.g" :key="item.i" ref="charts"></Charts>
         </grid-item>
       </grid-layout>
 
@@ -45,10 +46,13 @@
 
         this.$http.get('/REQUEST_API_CONFIG.json').then(response => {
           this.$store.commit("SET_CONFIG", response.data);
-          this.$store.commit("DARK_MODE", response.data.dark_mode);
+          this.$store.commit("SET_DARK_MODE", response.data.dark_mode);
           this.layout = response.data.layout;
           this.columns = response.data.columns;
+
+          console.log("response =>", response.data.layout);
         });
+
 
         this.$http.get('/REQUEST_API_DATA.json').then(response => {
           this.$store.commit("SET_DATACHART", response.data);
@@ -61,10 +65,18 @@
     },
     methods: {
       resizeEvent: function(i, newH, newW, newHPx, newWPx){
-        // this.$refs.charts[i].chart.setSize(newWPx, newHPx);
-       // this.$refs.charts[i].$children[i].chart.setSize(newWPx, newHPx);
-        this.$refs.charts[i].$refs.graph.chart.setSize(newWPx, newHPx);
-        console.log(i, newH, newW, newHPx, newWPx)
+
+        var Chart = this.$refs.charts.sort((a, b) => {
+          if (a.$vnode.key > b.$vnode.key){
+            return 1;
+          } else if (a.$vnode.key < b.$vnode.key){
+            return -1;
+          }
+          return 0;
+        });
+
+        Chart[parseInt(i)].$refs.graph.chart.setSize(newWPx - 20, newHPx - 20);
+
       },
       resizedEvent: function(i, newX, newY, newHPx, newWPx){
         // this.$refs.charts[i].chart.setSize(newX * 100, newY * 80);
@@ -76,6 +88,7 @@
         layout: [],
         draggable: true,
         resizable: true,
+        responsive: true,
         index: 0
       }
     }

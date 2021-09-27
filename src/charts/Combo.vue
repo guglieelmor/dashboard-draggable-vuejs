@@ -29,10 +29,10 @@ export default {
           zoomType: 'xy'
         },
         title: {
-          text: 'Average Monthly Temperature and Rainfall in Tokyo'
+          text: null
         },
         subtitle: {
-          text: 'Source: WorldClimate.com'
+          text: null
         },
         xAxis: [{
           categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',

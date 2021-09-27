@@ -29,10 +29,10 @@ export default {
           type: 'column'
         },
         title: {
-          text: 'Monthly Average Rainfall'
+          text: null
         },
         subtitle: {
-          text: 'Source: WorldClimate.com'
+          text: null
         },
         xAxis: {
           categories: [

@@ -19,7 +19,7 @@ export default new Vuex.Store({
     SET_CONFIG(state, obj){
       console.log(obj)
     },
-    DARK_MODE(state, obj){
+    SET_DARK_MODE(state, obj){
       if(obj){
         darkUnica(Highcharts);
 

@@ -18,7 +18,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
   .charts{
     width: 100%;
     height: 100%;
