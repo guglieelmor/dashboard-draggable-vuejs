@@ -4,9 +4,9 @@
   <Combo v-else-if="this.type == 'combo'" ref="graph"></Combo>
 </template>
 <script>
-import Column from '../charts/Column';
-import Pie from '../charts/Pie';
-import Combo from '../charts/Combo';
+import Column from './Column';
+import Pie from './Pie';
+import Combo from './Combo';
 
 export default {
   name: "Charts",

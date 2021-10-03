@@ -2,15 +2,17 @@ import Vue from "vue";
 
 import Vuex from "vuex";
 
+import avocado from "highcharts/themes/avocado";
 import darkUnica from "highcharts/themes/dark-unica";
-import Highcharts from 'highcharts'
+import Highcharts from 'highcharts';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     dataChart: [],
-    filter: ''
+    filter: '',
+    theme: ''
   },
   mutations:{
     SET_DATACHART(state, obj){
@@ -19,16 +21,18 @@ export default new Vuex.Store({
     SET_CONFIG(state, obj){
       console.log(obj)
     },
-    SET_DARK_MODE(state, obj){
-      if(obj){
-        darkUnica(Highcharts);
+    SET_THEME(state, obj){
+      state.theme = obj;
 
-        if (document.body.classList.contains("dark-mode")) {
+      switch (obj){
+        case 1:
           document.body.classList.remove("dark-mode");
-        } else {
+          avocado(Highcharts);
+          break;
+        case 2:
           document.body.classList.add("dark-mode");
-        }
-
+          darkUnica(Highcharts);
+          break;
       }
     }
   }

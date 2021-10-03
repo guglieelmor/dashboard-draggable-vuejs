@@ -1,7 +1,7 @@
 {
   "domain": "mydashboard",
   "dashboard_name": "Fist Dashboard!",
-  "dark_mode": false,
+  "theme": 2,
   "columns": {
     "xss": 1,
     "xs": 1,
@@ -15,23 +15,23 @@
       "g": "column",
       "x":0,
       "y":0,
-      "w":4,
+      "w":16,
       "h":8
     },
     {
       "i":"1",
       "g": "pie",
-      "x":4,
+      "x":16,
       "y":0,
-      "w":4,
+      "w":16,
       "h":8
     },
     {
       "i":"2",
       "g": "combo",
-      "x":8,
+      "x":32,
       "y":0,
-      "w":4,
+      "w":16,
       "h":8
     }
   ]
